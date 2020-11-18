@@ -71,3 +71,4 @@ create table orderdetails(
 	constraint pk_orderdetails Primary Key(invoiceid, prodid),
 	constraint fk_orderdetails_invoiceid Foreign Key(invoiceid) references invoices(invoiceid),
 	constraint fk_orderdetails_prodid Foreign Key(prodid) references products(prodid) );
+
