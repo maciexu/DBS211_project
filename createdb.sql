@@ -12,12 +12,18 @@ create table employees(
    empid integer constraint pk_employees Primary Key,
    empfname varchar(30) not null,
    emplname varchar(30) not null,
-   socins varchar(9) constraint ck_employees_socins check(socins not like '%[^0-9]%') unique not null,
+   socins varchar(9) constraint ck_employees_socins check(socins not like '%[^0-9]%') unique not null,     --varchar(9) up to 9 charactors? 
    positionid integer constraint fk_employees_positionid Foreign Key(positionid) references positions(positionid),
    hire_date date,
    supvid integer,
    constraint ck_employees_empid check(empid>0),
    constraint ck_employees_supvid check(supvid>0)    );        --not sure if we need to set FK for self reference
+
+--alter table employees add constraint ck_employees_socins
+    --check (socins like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]');
+
+--alter table employees add constraint ck_employees_socins
+    -- check (len(socins) = 9 and socins not like '%[^0-9]%');
 
 create table customers(
    custid integer constraint pk_customers Primary Key,
